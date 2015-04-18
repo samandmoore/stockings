@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150418215537) do
+ActiveRecord::Schema.define(version: 20150418223900) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,19 +19,28 @@ ActiveRecord::Schema.define(version: 20150418215537) do
   create_table "entries", force: :cascade do |t|
     t.integer  "match_id"
     t.integer  "user_id"
-    t.datetime "created_at",           null: false
-    t.datetime "updated_at",           null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "technology_ticker_id"
+    t.integer  "financial_services_ticker_id"
+    t.integer  "telecommunications_ticker_id"
+    t.integer  "energy_ticker_id"
+    t.integer  "healthcare_ticker_id"
+    t.integer  "flex_1_ticker_id"
+    t.integer  "flex_2_ticker_id"
+    t.integer  "flex_3_ticker_id"
+    t.integer  "flex_4_ticker_id"
   end
 
   create_table "matches", force: :cascade do |t|
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "match_type"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.integer  "max_entries"
     t.integer  "duration"
+    t.integer  "wager_cents", limit: 8
   end
 
   create_table "sectors", force: :cascade do |t|

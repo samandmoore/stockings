@@ -1,7 +1,7 @@
 <%= render @match %>
 
 <ul>
-<%= render partial: 'match_entry', collection: @match.entries, as: :entry %>
+    <%= render partial: 'match_entry', collection: @match.entries, as: :entry %>
 </ul>
 
 <%= link_to 'Join!', match_entries_path(@match), method: :post %>

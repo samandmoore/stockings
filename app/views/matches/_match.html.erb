@@ -1,11 +1,14 @@
 <div>
-    <h2>Match info</h2>
+    <h2><%= link_to_unless_current("Match", match_path(@match)) %></h2>
     <ul>
         <li>
             Start: <%= @match.start_at %>
         </li>
         <li>
             Duration: <%= @match.duration %> business days
+        </li>
+        <li>
+            Wager: <%= @match.wager.format %>
         </li>
         <li>
             Max players: <%= @match.max_entries %>

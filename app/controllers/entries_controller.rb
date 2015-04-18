@@ -35,6 +35,18 @@ class EntriesController < ApplicationController
   private
 
   def update_params
-    params.require(:entry).permit(:technology_ticker_id)
+    params.require(:entry).permit(
+      %i(
+        technology_ticker_id
+        financial_services_ticker_id
+        telecommunications_ticker_id
+        energy_ticker_id
+        healthcare_ticker_id
+        flex_1_ticker_id
+        flex_2_ticker_id
+        flex_3_ticker_id
+        flex_4_ticker_id
+      )
+    )
   end
 end

@@ -4,7 +4,7 @@ class MatchesController < ApplicationController
   end
 
   def new
-    @match = Match.new 
+    @match = Match.new
   end
 
   def show
@@ -14,7 +14,7 @@ class MatchesController < ApplicationController
   def create
     @match = Match.open.tomorrow.find_or_initialize_by(create_params)
 
-    if @match.save
+    if @match.save!
       redirect_to @match
     else
       render :new
@@ -24,6 +24,6 @@ class MatchesController < ApplicationController
   private
 
   def create_params
-    params.require(:match).permit(:duration, :max_entries)
+    params.require(:match).permit(:duration, :max_entries, :wager_cents)
   end
 end

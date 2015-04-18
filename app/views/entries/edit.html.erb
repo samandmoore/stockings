@@ -1,13 +1,19 @@
 <%= render @match %>
 
-<h1>ENTRY IS HERE</h1>
-
 <%= simple_form_for @entry, url: match_entry_path(@match, @entry) do |f| %>
     <div class="bg-danger">
         <%= f.error :user_id %>
     </div>
 
     <%= f.input :technology_ticker_id, collection: Ticker.all, label_method: :symbol %>
+    <%= f.input :financial_services_ticker_id, collection: Ticker.all, label_method: :symbol %>
+    <%= f.input :telecommunications_ticker_id, collection: Ticker.all, label_method: :symbol %>
+    <%= f.input :energy_ticker_id, collection: Ticker.all, label_method: :symbol %>
+    <%= f.input :healthcare_ticker_id, collection: Ticker.all, label_method: :symbol %>
+    <%= f.input :flex_1_ticker_id, collection: Ticker.all, label_method: :symbol %>
+    <%= f.input :flex_2_ticker_id, collection: Ticker.all, label_method: :symbol %>
+    <%= f.input :flex_3_ticker_id, collection: Ticker.all, label_method: :symbol %>
+    <%= f.input :flex_4_ticker_id, collection: Ticker.all, label_method: :symbol %>
 
     <%= f.submit %>
 <% end %>

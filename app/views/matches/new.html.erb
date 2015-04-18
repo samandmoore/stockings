@@ -1,0 +1,8 @@
+<h1>Find a match!</h1>
+
+<%= simple_form_for @match, class: 'form-horizontal' do |f| %>
+
+    <%= f.input :duration, as: :select, collection: [1, 4, 20], label: 'Business Days' %>
+    <%= f.input :max_entries, as: :select, collection: [2, 10, 50] %>
+    <%= f.submit %>
+<% end %>

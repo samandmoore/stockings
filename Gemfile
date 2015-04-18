@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+ruby '2.1.2'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.0'
@@ -28,6 +29,8 @@ gem 'style_closet', git: 'https://22704ef415aa03b083c941aa35853aa3f2795b9c@githu
 
 #react
 gem 'react-rails', '~> 1.0'
+
+gem 'rails_12factor', group: :production
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

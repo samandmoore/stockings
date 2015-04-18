@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resources :entries, except: :index
   end
 
+  resources :tickers
+
   resources :entries, only: :index 
 
   get '/chart' => 'pages#chart'

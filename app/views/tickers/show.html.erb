@@ -1,0 +1,19 @@
+<h1>Ticker <%= @ticker.name %></h1>
+
+<div class="chartContainer" style="width:800px;height:460px;position:relative;"></div>
+<div class="sentiment">
+    Bullish Intensity: <%= @ticker.sentiment.bullish_intensity %>
+</div>
+
+
+<script type="text/javascript">
+
+$(document).ready(function() {
+
+    var stxx = new STXChart({container: $$$(".chartContainer"), layout: { chartType: "line", candleWidth: 16 }});
+    
+    stxx.newChart("<%= @ticker.symbol %>", <%= raw @ticker.chart_data.to_json %>);
+
+});
+
+</script>

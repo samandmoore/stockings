@@ -35,9 +35,32 @@ class XigniteClient
         low:  tuple['Low'],
         close:  tuple['LastClose'],
         volume:  tuple['Volume'],
-        adj_close:  tuple['LastClose']
-      )
+        adj_close:  tuple['LastClose'])
     end
+  end
+
+
+  def all_north_america_companies
+    north_american_companies('A', 'ZZZZ')
+  end
+
+  def north_american_companies(start_symbol, end_symbol)
+    params = {
+      "_Token" => token,
+      "StartSymbol" => start_symbol,
+      "EndSymbol" => end_symbol,
+      "MarketIdentificationCode" => "XNAS"
+    }
+    response = conn.get("http://financials.xignite.com/xFinancials.json/ListCompanies", params).body['Companies']
+    response.map do |tuple|
+      XigniteTicker.new(
+          company_name: tuple["CompanyName"] ,
+          symbol: tuple["Symbol"],
+          cusip: tuple["CUSIP"],
+          isin: tuple["ISIN"],
+          valoren: tuple["Valoren"],
+          market: tuple["Market"])
+   end
   end
 
 

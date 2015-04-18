@@ -23,6 +23,12 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# shared betterment styles
+gem 'style_closet', git: 'https://22704ef415aa03b083c941aa35853aa3f2795b9c@github.com/Betterment/style-closet'
+
+#react
+gem 'react-rails', '~> 1.0'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

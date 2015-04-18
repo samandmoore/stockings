@@ -1,0 +1,15 @@
+<p>Testing</p>
+
+<div class="chartContainer" style="width:800px;height:460px;position:relative;"></div>
+
+
+<script type="text/javascript">
+
+$( document ).ready(function() {
+
+    var stxx=new STXChart({container:$$$(".chartContainer")});
+		stxx.newChart(<%= @ticker %>, <%=raw @chart_data.to_json %>);
+
+});
+
+</script>

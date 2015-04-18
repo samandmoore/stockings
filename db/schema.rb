@@ -27,12 +27,12 @@ ActiveRecord::Schema.define(version: 20150418180739) do
     t.datetime "start_at"
     t.datetime "end_at"
     t.string   "match_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "max_entries"
     t.integer  "duration"
-  end  
-  
+  end
+
   create_table "tickers", force: :cascade do |t|
     t.string   "symbol"
     t.string   "sector"

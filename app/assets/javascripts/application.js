@@ -17,4 +17,7 @@
 //= require react
 //= require react_ujs
 //= require components
+//= require chartiq/stxThirdParty.js
+//= require chartiq/stx.js
+//= require chartiq/stxKernelOs.js
 //= require_tree .

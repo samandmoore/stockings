@@ -23,7 +23,7 @@ class Ticker < ActiveRecord::Base
         "Adj_Close"=>date.adj_close,
         "Volume"=>date.volume
       }
-    end
+    end.reverse
   end
 
   def sentiment

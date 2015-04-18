@@ -6,4 +6,5 @@ class Ticker < ActiveRecord::Base
   end
 
   validates :name, :cusip, :symbol, presence: true
+  validates :symbol, :cusip, uniqueness: true
 end

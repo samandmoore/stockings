@@ -35,6 +35,6 @@ class EntriesController < ApplicationController
   private
 
   def update_params
-    params.require(:entry).permit(:tech_ticker_id)
+    params.require(:entry).permit(:technology_ticker_id)
   end
 end

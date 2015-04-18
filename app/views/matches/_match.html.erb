@@ -1,9 +1,17 @@
-<li>
-    <div>
-        <ul>
-        <li><%= match.start_at %></li>
-        <li><%= match.duration %></li>
-        <li><%= match.max_entries %></li>
-        </ul>
-    </div>
-</li>
+<div>
+    <h2>Match info</h2>
+    <ul>
+        <li>
+            Start: <%= @match.start_at %>
+        </li>
+        <li>
+            Duration: <%= @match.duration %> business days
+        </li>
+        <li>
+            Max players: <%= @match.max_entries %>
+        </li>
+        <li>
+            Total players: <%= @match.entries.count %>
+        </li>
+    </ul>
+</div>

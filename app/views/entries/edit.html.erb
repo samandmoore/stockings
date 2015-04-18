@@ -1,0 +1,13 @@
+<%= render @match %>
+
+<h1>ENTRY IS HERE</h1>
+
+<%= simple_form_for @entry, url: match_entry_path(@match, @entry) do |f| %>
+    <div class="bg-danger">
+        <%= f.error :user_id %>
+    </div>
+
+    <%= f.input :tech_ticker_id %>
+
+    <%= f.submit %>
+<% end %>

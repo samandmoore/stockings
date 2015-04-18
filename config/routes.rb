@@ -1,11 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :matches
+  resources :matches do
+    resources :entries, except: :index
+  end
 
-  root to: 'matches#index'
+  resources :entries, only: :index 
 
   get '/chart' => 'pages#chart'
+
+  root to: 'entries#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

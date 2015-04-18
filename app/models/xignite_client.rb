@@ -1,12 +1,7 @@
 require 'faraday'
 require 'faraday_middleware'
 
-class TickerController < ApplicationController
-
-  def token
-    "6E10075F14A6447E94C8700F8CF7116A"
-  end
-
+class XIgniteClient
 
   def get_delayed_quote(symbol)
     api_paramaters = {
@@ -36,6 +31,20 @@ class TickerController < ApplicationController
     p raw_response
   end
 
+
+
+
+
+  private
+
+  def token
+    "6E10075F14A6447E94C8700F8CF7116A"
+  end
+
+  def xignite_api_url(resource)
+    "http://www.xignite.com/#{resource}"
+  end
+
   def conn
     @conn ||= Faraday.new do |faraday|
       faraday.request :url_encoded
@@ -44,9 +53,5 @@ class TickerController < ApplicationController
       faraday.options[:timeout] = 7
       faraday.options[:open_timeout] = 2
     end
-  end
-
-  def xignite_api_url(resource)
-    "http://www.xignite.com/#{resource}"
   end
 end

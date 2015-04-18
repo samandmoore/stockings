@@ -5,9 +5,9 @@ class XigniteClient
 
   def get_delayed_quote(symbol)
     api_paramaters = {
-        'IdentifierType' => 'Symbol',
-        'Identifier' => symbol,
-        '_Token' => token
+      'IdentifierType' => 'Symbol',
+      'Identifier' => symbol,
+      '_Token' => token
     }
 
     raw_response = conn.get(xignite_api_url('xGlobalQuotes.json/GetGlobalDelayedQuote'), api_paramaters).body
@@ -19,23 +19,23 @@ class XigniteClient
 
     # { "Volume": 88994274.0, "Adj_Close": 15.79, "High": 15.75, "Low": 15.5, "Date": "2015-04-17", "Close": 15.79, "Open": 15.71}
     api_paramaters = {
-        'IdentifierType' => 'Symbol',
-        'Identifier' => symbol,
-        'AdjustmentMethod' => 'SplitAndCashDividend',
-        'StartDate' => start_date,
-        'EndDate' => end_date,
-        '_Token' => token
+      'IdentifierType' => 'Symbol',
+      'Identifier' => symbol,
+      'AdjustmentMethod' => 'SplitAndCashDividend',
+      'StartDate' => start_date,
+      'EndDate' => end_date,
+      '_Token' => token
     }
 
     response = conn.get(xignite_api_url('xGlobalHistorical.json/GetGlobalHistoricalQuotesRange'), api_paramaters).body['GlobalQuotes']
     response.map do |tuple|
       HistoricQuote.new(date: Date.strptime(tuple["Date"], '%m/%d/%Y'),
-        open: tuple['Open'],
-        high: tuple['High'],
-        low:  tuple['Low'],
-        close:  tuple['LastClose'],
-        volume:  tuple['Volume'],
-        adj_close:  tuple['LastClose'])
+                        open: tuple['Open'],
+                        high: tuple['High'],
+                        low: tuple['Low'],
+                        close: tuple['LastClose'],
+                        volume: tuple['Volume'],
+                        adj_close: tuple['LastClose'])
     end
   end
 
@@ -54,17 +54,57 @@ class XigniteClient
     response = conn.get("http://financials.xignite.com/xFinancials.json/ListCompanies", params).body['Companies']
     response.map do |tuple|
       XigniteTicker.new(
-          company_name: tuple["CompanyName"] ,
-          symbol: tuple["Symbol"],
-          cusip: tuple["CUSIP"],
-          isin: tuple["ISIN"],
-          valoren: tuple["Valoren"],
-          market: tuple["Market"])
-   end
+        company_name: tuple["CompanyName"],
+        symbol: tuple["Symbol"],
+        cusip: tuple["CUSIP"],
+        isin: tuple["ISIN"],
+        valoren: tuple["Valoren"],
+        market: tuple["Market"])
+    end
   end
 
+  def nasdaq_ticker_detail(symbol)
+    today = Time.now.strftime('%m/%d/%Y')
+    params = {
+      "_Token" => token,
+      "IdentifierType" => "Symbol",
+      "Identifier" => symbol,
+      "StartDate" => today,
+      "EndDate" => today
+    }
 
+    response = conn.get('http://globalmaster.xignite.com/xglobalmaster.json/GetMasterByIdentifier', params).body
+    nasdaq_item = response.select { |item| item["ExchangeName"] == "NASDAQ" }.first
+    XignteTickerDetail.new(
+      symbol: nasdaq_item["Symbol"],
+      sector: nasdaq_item["Sector"],
+      industry: nasdaq_item["Industry"]
+    ) if nasdaq_item
+  end
 
+  def all_sectors
+    params = {
+      "_Token" => token,
+    }
+
+    response = conn.get('http://fundamentals.xignite.com/xFundamentals.json/ListSectorsAndIndustries', params).body['Sectors']
+    response.map do |sector|
+      XigniteSector.new(
+        code: sector["Code"],
+        name: sector["Name"],
+        children: sector["IndustryGroups"].map do |group|
+          XigniteSector.new(
+            code: group["Code"],
+            name: group["Name"],
+            children: group["Industries"].map do |industry|
+              XigniteSector.new(
+                code: industry["Code"],
+                name: industry["Name"],
+                children: [])
+            end)
+        end)
+    end
+  end
 
 
   private

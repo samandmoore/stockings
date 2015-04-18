@@ -48,8 +48,6 @@ ActiveRecord::Schema.define(version: 20150418205608) do
     t.string   "company_name"
     t.string   "cusip"
     t.integer  "sector_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|

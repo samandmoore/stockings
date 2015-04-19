@@ -12,7 +12,7 @@ class TickersController < ApplicationController
     if Ticker.respond_to?(params[:id])
       @tickers = Ticker.public_send(params[:id])
     else
-      @tickers = Ticker.all
+      @tickers = Ticker.all.where.not(id: @entry.ticker_ids)
     end
   end
 

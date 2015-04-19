@@ -31,4 +31,17 @@ class Entry < ActiveRecord::Base
   def score
     @score ||= rand(10)
   end
+
+  def ticker_ids
+    [technology_ticker_id, 
+      financial_services_ticker_id, 
+      telecommunications_ticker_id, 
+      energy_ticker_id, 
+      healthcare_ticker_id, 
+      flex_1_ticker_id, 
+      flex_2_ticker_id, 
+      flex_3_ticker_id, 
+      flex_4_ticker_id
+    ].compact
+  end
 end

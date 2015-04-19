@@ -13,6 +13,7 @@ class PsychSignalClient
     }
 
     response = conn.get(psychsignal_api_url('sentiments/'), api_paramaters).body.first
+    if response
       Sentiment.new(
         bullish_intensity: response['bullish_intensity'],
         bearish_intensity: response['bearish_intensity'],
@@ -22,6 +23,9 @@ class PsychSignalClient
         bull_bear_msg_ratio:  response['bull_bear_msg_ratio'],
         total_scanned_messages: response['total_scanned_messages']
       )
+    else
+      Sentiment.new
+    end
   end
 
 

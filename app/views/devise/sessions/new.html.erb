@@ -1,26 +1,23 @@
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+<div class="login-wrapper">
+    <div class="logo">
+        <%= image_tag("chess_king.png") %>
     </div>
-  <% end -%>
+    <h1>StocKings</h1>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: 'form-horizontal' }) do |f| %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
+        <%= f.error_notification %>
+        <%= f.input :email, autofocus: true, as: :email %>
 
-<%= render "devise/shared/links" %>
+        <%= f.input :password, autocomplete: "off", as: :password %>
+
+        <% if devise_mapping.rememberable? -%>
+            <%= f.input :remember_me, as: :boolean %>
+        <% end -%>
+
+        <div class="form-actions">
+            <%= f.button :submit, "Log in", class: "btn btn-default" %>
+        </div>
+    <% end %>
+
+    <%#<%= render "devise/shared/links" %>%>
+</div>

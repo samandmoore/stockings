@@ -381,6 +381,46 @@ a {
 
 }
 
+.standings-wrapper {
+  ul {
+    padding: 0;
+
+    li {
+      padding: 2.5rem;
+      list-style-type: none;
+      border-top: 1px solid $white;
+      @extend .clearfix;
+
+      .full-name {
+        float: left;
+        width: 70%;
+        padding: 1.5rem;
+      }
+
+      .score {
+        float: right;
+        padding: 1.5rem;
+      }
+
+      &:nth-child(1){
+        .score {
+          background-color: #C98910;
+        }
+      }
+      &:nth-child(2){
+        .score {
+          background-color: #A8A8A8;
+        }
+      }
+      &:nth-child(3){
+        .score {
+          background-color: #965A38;
+        }
+      }
+    }
+  }
+}
+
 .green {
   color: $green;
 }

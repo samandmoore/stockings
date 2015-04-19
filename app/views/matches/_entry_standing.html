@@ -1,3 +1,8 @@
 <li>
-    <%= entry.user.full_name %> | <%= entry.score %>
+    <div class="full-name">
+        <%= entry.user.full_name %>
+    </div>
+    <div class="score">
+        <%= sprintf "%.2f", entry.score %>%
+    </div>
 </li>

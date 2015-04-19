@@ -15,13 +15,13 @@ class Ticker < ActiveRecord::Base
 
     XigniteClient.new.get_historical_quotes(symbol, formatted_start, formatted_now).map do |date|
       {
-        "Date"=>date.date,
-        "Open"=>date.open,
-        "Close"=>date.close,
-        "High"=>date.high,
-        "Low"=>date.low,
-        "Adj_Close"=>date.adj_close,
-        "Volume"=>date.volume
+        "Date" => date.date,
+        "Open" => date.open,
+        "Close" => date.close,
+        "High" => date.high,
+        "Low" => date.low,
+        "Adj_Close" => date.adj_close,
+        "Volume" => date.volume
       }
     end.reverse
   end
@@ -29,4 +29,26 @@ class Ticker < ActiveRecord::Base
   def sentiment
     PsychSignalClient.new.get_current_sentiment(symbol)
   end
+
+  def latest_price
+    bats_price = XigniteClient.new.get_bats_price(self.symbol)
+    bats_price.bid == 0 ? bats_price.close : bats_price.bid
+  end
+
+  def latest_change
+    XigniteClient.new.get_bats_price(self.symbol).change
+  end
+
+  def closing_price_on(as_of)
+    XigniteClient.new.get_historical_quotes(self.symbol, as_of, as_of).first.adj_close
+  end
+
+  def opening_price_on(as_of)
+    XigniteClient.new.get_historical_quotes(self.symbol, as_of, as_of).first.open
+  end
+
+  def change_on(as_of)
+    XigniteClient.new.get_historical_quotes(self.symbol, as_of, as_of).first.change
+  end
+
 end

@@ -35,7 +35,8 @@ class XigniteClient
                         low: tuple['Low'],
                         close: tuple['LastClose'],
                         volume: tuple['Volume'],
-                        adj_close: tuple['LastClose'])
+                        adj_close: tuple['LastClose'],
+                        change: tuple['PercentChangeFromOpen'])
     end
   end
 
@@ -121,6 +122,24 @@ class XigniteClient
     end
   end
 
+
+  def get_bats_price(symbol)
+    params = {
+      "_Token" => token,
+      "Symbol" => symbol
+    }
+    response = conn.get('http://batsrealtime.xignite.com/xBATSRealTime.json/GetRealQuote', params).body
+    XigniteBatsPrice.new(
+      date: Time.strptime(response["Date"], "%m/%d/%Y"),
+      symbol: response["Symbol"],
+      open: response["Open"].to_f,
+      close: response["Close"].to_f,
+      last: response["Last"].to_f,
+      bid: response["Bid"].to_f,
+      ask: response["Ask"].to_f,
+      change: response["Change"].to_f,
+    )
+  end
 
   private
 

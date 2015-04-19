@@ -1,4 +1,4 @@
-<div class="overall-return">
+<div class="overall-return <%= @entry.score && @entry.score > 0 ? 'green' : 'red' %>">
     Overall Return: <%= @entry.score %>
 </div>
 

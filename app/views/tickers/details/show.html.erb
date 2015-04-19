@@ -15,6 +15,8 @@
 
 $(document).ready(function() {
 
+    STXChart.prototype.prepend('drawXAxis', function() { return true; });
+
     var stxx = new STXChart({container: $$$(".chartContainer"), 
         layout: { chartType: "colored_line" },
         preferences: { whitespace: 1, magnet: true, labels: false}});

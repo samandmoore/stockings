@@ -16,9 +16,10 @@
 $(document).ready(function() {
 
     var stxx = new STXChart({container: $$$(".chartContainer"), 
-        layout: { chartType: "colored_line", crosshair: true },
+        layout: { chartType: "colored_line" },
         preferences: { whitespace: 1, magnet: true}});
-    
+    stxx.chart.xAxis.displayGridLines=false;
+    stxx.chart.yAxis.displayGridLines=false;
     stxx.newChart("<%= @ticker.symbol %>", <%= raw @ticker.chart_data.to_json %>);
 
 });

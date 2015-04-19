@@ -3,6 +3,7 @@
         <%= ticker_slot.humanize[0..3] %>
     </div>
 
+    <div class="ticker-pick">
     <% if @entry.public_send("#{ticker_slot}_ticker") %>
         <div class="ticker edit">
             <%= @entry.public_send("#{ticker_slot}_ticker").name %>
@@ -12,6 +13,7 @@
             Add a ticker
         </div>
     <% end %>
+    </div>
 
     <div class="link">
         <% if @entry.public_send("#{ticker_slot}_ticker") %>

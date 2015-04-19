@@ -155,8 +155,11 @@ a {
     float: left;
     width: 40%;
   }
-  .ticker-edit {
+  .ticker-pick {
     float: left;
+    .add {
+      color: grey;
+    }
   }
   .link {
     @extend .right;

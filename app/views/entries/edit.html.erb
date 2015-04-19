@@ -1,4 +1,5 @@
 <h1>Your Portfolio</h1>
+<h2><%= link_to "< Back to Match", match_path(@match) %></h2>
 
 <ul class="entry-tickers">
     <%= render partial: 'ticker_link', locals: {ticker_slot: 'technology'} %>

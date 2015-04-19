@@ -20,4 +20,5 @@
 //= require chartiq/stxThirdParty.js
 //= require chartiq/stx.js
 //= require chartiq/stxKernelOs.js
+//= require jquery.countdown.min.js
 //= require_tree .

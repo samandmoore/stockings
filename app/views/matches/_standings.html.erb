@@ -16,6 +16,10 @@
             });
         </script>
         </div>
+    <% elsif @match.ended? && !@match.winning_entry %>
+        <div class="countdown">
+            <span>We're still calculating a winner...</span>
+        </div>
     <% else %>
         <div class="countdown">
             <% if @match.winning_entry && @match.winning_entry.user == current_user %>

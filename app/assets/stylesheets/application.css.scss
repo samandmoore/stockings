@@ -124,5 +124,14 @@ h1 {
 }
 
 .entries.index {
+  ul {
+    padding: 0;
+    border-top: 1px solid $white;
 
+    li {
+      padding: 2.5rem;
+      list-style-type: none;
+      border-bottom: 1px solid $white;
+    }
+  }
 }

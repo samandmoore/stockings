@@ -1,5 +1,14 @@
 <li>
-    Entry for <%= entry.user.email %>
+    <div class="left">
+    </div>
+
+    <div class="right">
+        <% if entry.match.started? %>
+            <span><%= entry.rank %> of <%= entry.match.entries.size %></span>
+        <% else %>
+            <span>starts <%= entry.match.start_at %></span>
+        <% end %>
+    </div>
 
     <% if entry.user == current_user && entry.editable? %>
         <%= link_to("Edit", edit_match_entry_path(entry.match, entry)) %>

@@ -24,6 +24,10 @@ class Entry < ActiveRecord::Base
     !match.started?
   end
 
+  def rank
+    1
+  end
+
   def <=>(other)
     score <=> other.score
   end
@@ -33,14 +37,14 @@ class Entry < ActiveRecord::Base
   end
 
   def ticker_ids
-    [technology_ticker_id, 
-      financial_services_ticker_id, 
-      telecommunications_ticker_id, 
-      energy_ticker_id, 
-      healthcare_ticker_id, 
-      flex_1_ticker_id, 
-      flex_2_ticker_id, 
-      flex_3_ticker_id, 
+    [technology_ticker_id,
+      financial_services_ticker_id,
+      telecommunications_ticker_id,
+      energy_ticker_id,
+      healthcare_ticker_id,
+      flex_1_ticker_id,
+      flex_2_ticker_id,
+      flex_3_ticker_id,
       flex_4_ticker_id
     ].compact
   end

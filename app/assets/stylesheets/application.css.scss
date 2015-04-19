@@ -1,6 +1,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "chartiq";
+@import "museo";
 
 $black: #262626;
 
@@ -9,7 +10,15 @@ body {
 }
 
 .login-wrapper {
+
   margin: 0 auto;
+  margin-top: 70px;
+  text-align: center;
+  background: radial-gradient(150px at center, #2f4f4f, #262626);
+  color: white;
+  font-family: 'MuseoSans', 'Helvetica', 'Arial', sans-serif;
+  height: 300px;
+
   h1, .logo {
     text-align: center;
   }

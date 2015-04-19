@@ -37,5 +37,8 @@ module Stockings
       g.javascripts false
       g.helpers false
     end
+
+    config.assets.enabled = true
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
   end
 end

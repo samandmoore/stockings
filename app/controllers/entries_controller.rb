@@ -6,9 +6,12 @@ class EntriesController < ApplicationController
 
   def create
     @match = Match.find params[:match_id]
-    @entry = @match.entries.find_or_create_by!(user: current_user)
-
-    redirect_to match_entry_path(@match, @entry)
+    @entry = @match.entries.find_or_initialize_by(user: current_user)
+    if @match.save
+      redirect_to match_entry_path(@match, @entry)
+    else
+      redirect_to :back, flash: { error: 'Match is full!' }
+    end
   end
 
   def edit

@@ -89,7 +89,7 @@ body {
   }
 
   form {
-    margin-top: 40px;
+    margin-top: 30px;
 
     .form-group {
       margin-bottom: 25px;
@@ -97,8 +97,9 @@ body {
       input {
         background: transparent;
         border: none;
-        border-bottom: 2px solid white;
+        border-bottom: 1px solid white;
         width: 70%;
+        padding: 10px 0;
 
         &:focus {
           outline: none;

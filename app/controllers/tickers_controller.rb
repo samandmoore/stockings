@@ -10,9 +10,9 @@ class TickersController < ApplicationController
     @ticker_slot = params[:id]
 
     if Ticker.respond_to?(params[:id])
-      @tickers = Ticker.public_send(params[:id]).limit(6)
+      @tickers = Ticker.public_send(params[:id])
     else
-      @tickers = Ticker.all.limit(6)
+      @tickers = Ticker.all
     end
   end
 

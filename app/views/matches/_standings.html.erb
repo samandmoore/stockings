@@ -1,3 +1,32 @@
+<div class="match-to-join">
+    <div class="wager"><%= @match.wager.format %></div>
+    <div class="right">
+        <div class="duration">Runs for <%= @match.duration %> business days</div>
+    </div>
+    <% if !@match.ended? %>
+        <div class="countdown">
+            <span>ends in </span>
+            <br />
+            <span class="starts-at"></span>
+            <script type="text/javascript">
+            $('.starts-at').countdown("<%= @match.end_at.strftime("%Y/%m/%d") %>", function(event) {
+                $(this).text(
+                    event.strftime('%-H hours %M minutes %S seconds')
+                );
+            });
+        </script>
+        </div>
+    <% else %>
+        <div class="countdown">
+            <% if @match.winning_entry && @match.winning_entry.user == current_user %>
+                <span>You won!</span>
+            <% else %>
+                <span>You lost :(</span>
+            <% end %>
+        </div>
+    <% end %>
+</div>
+
 <ul>
     <%= render partial: 'entry_standing', collection: @match.entries.lazy.sort.reverse, as: :entry %>
 </ul>

@@ -40,7 +40,7 @@ class Ticker < ActiveRecord::Base
   end
 
   def latest_change
-    XigniteClient.new.get_bats_price(self.symbol).change
+    XigniteClient.new.get_bats_price(self.symbol).change.try(:round, 2)
   end
 
   def closing_price_on(as_of)

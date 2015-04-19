@@ -1,0 +1,14 @@
+<% ticker = @entry.public_send("#{ticker_slot}_ticker") %>
+<li>
+    <div class="ticker-slot">
+        <%= ticker_slot.humanize %>
+    </div>
+    <div class="ticker">
+        <%= ticker.try('name') || 'Not selected' %> 
+    </div>
+
+    <% latest_change = ticker.try('latest_change') || 0 %>
+    <div class="return <%= latest_change > 0 ? 'green' : 'red' %>">
+        <%= latest_change %>
+    </div>
+</li>

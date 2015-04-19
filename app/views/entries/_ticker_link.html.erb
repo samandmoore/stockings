@@ -1,15 +1,25 @@
-<li>
+<li class="entry-ticker">
     <div class="ticker-slot">
-        <%= ticker_slot.humanize %>
+        <%= ticker_slot.humanize[0..3] %>
     </div>
-    <div class="ticker">
-        <%= @entry.public_send("#{ticker_slot}_ticker").try('name') || 'Add a ticker' %> 
+
+    <div class="ticker-pick">
+    <% if @entry.public_send("#{ticker_slot}_ticker") %>
+        <div class="ticker edit">
+            <%= @entry.public_send("#{ticker_slot}_ticker").name %>
+        </div>
+    <% else %>
+        <div class="ticker add">
+            Add a ticker
+        </div>
+    <% end %>
     </div>
+
     <div class="link">
         <% if @entry.public_send("#{ticker_slot}_ticker") %>
-            <%= link_to 'Edit', edit_match_entry_ticker_path(@match, @entry, ticker_slot) %>
+            <%= link_to '', edit_match_entry_ticker_path(@match, @entry, ticker_slot), class: 'right-arrow' %>
         <% else %>
-            <%= link_to 'Add', edit_match_entry_ticker_path(@match, @entry, ticker_slot) %>
+            <%= link_to '', edit_match_entry_ticker_path(@match, @entry, ticker_slot), class: 'right-arrow'%>
         <% end %>
     </div>
 </li>

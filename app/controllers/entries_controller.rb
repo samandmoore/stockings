@@ -8,7 +8,7 @@ class EntriesController < ApplicationController
     @match = Match.find params[:match_id]
     @entry = @match.entries.find_or_initialize_by(user: current_user)
     if @match.save
-      redirect_to match_entry_path(@match, @entry)
+      redirect_to edit_match_entry_path(@match, @entry)
     else
       redirect_to :back, flash: { error: 'Match is full!' }
     end

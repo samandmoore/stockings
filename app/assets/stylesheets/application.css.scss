@@ -87,4 +87,34 @@ body {
   .logo {
     margin: 0 auto;
   }
+
+  form {
+    margin-top: 40px;
+
+    .form-group {
+      margin-bottom: 25px;
+
+      input {
+        background: transparent;
+        border: none;
+        border-bottom: 2px solid white;
+        width: 70%;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+
+    .form-actions {
+      width: 75%;
+      margin: 43px auto;
+
+      input {
+        background-color: #4A90E2;
+        border: none;
+        color: white;
+      }
+    }
+  }
 }

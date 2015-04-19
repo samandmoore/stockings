@@ -392,14 +392,13 @@ a {
 
       .full-name {
         float: left;
-        width: 70%;
-        padding: 1.5rem;
+        width: 60%;
+        padding: 1.5rem 0;
       }
 
       .score {
         float: right;
-        padding: 1.5rem;
-        border-radius: 50%;
+        padding: 1.5rem 0;
       }
 
       &:nth-child(1){

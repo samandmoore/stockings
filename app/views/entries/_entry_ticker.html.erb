@@ -5,7 +5,7 @@
     </div>
     <div class="ticker-pick">
         <% if ticker %>
-            <%= truncate(ticker.name, length: 20) %> (<%= ticker.symbol %>)
+            <%= truncate(ticker.name, length: 16) %> (<%= ticker.symbol %>)
         <% else %>
             Not selected
         <% end %>

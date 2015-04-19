@@ -29,4 +29,8 @@ class Ticker < ActiveRecord::Base
   def sentiment
     PsychSignalClient.new.get_current_sentiment(symbol)
   end
+
+  def crowd_v_street
+    EstimizeClient.new.ratio(symbol)
+  end
 end

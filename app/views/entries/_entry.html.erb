@@ -1,38 +1,11 @@
-<li>
-    Entry for <%= entry.user.full_name %>
-    <ul>
-        <li>
-            Technology: <%= entry.technology_ticker.try(:name) || "Not picked" %>
-        </li>
-        <li>
-            Financial Services: <%= entry.financial_services_ticker.try(:name) || "Not picked" %>
-        </li>
-        <li>
-            Telecommunications: <%= entry.telecommunications_ticker.try(:name) || "Not picked" %>
-        </li>
-        <li>
-            Energy: <%= entry.energy_ticker.try(:name) || "Not picked" %>
-        </li>
-        <li>
-            Healthcare: <%= entry.healthcare_ticker.try(:name) || "Not picked" %>
-        </li>
-        <li>
-            Flex: <%= entry.flex_1_ticker.try(:name) || "Not picked" %>
-        </li>
-        <li>
-            Flex: <%= entry.flex_2_ticker.try(:name) || "Not picked" %>
-        </li>
-        <li>
-            Flex: <%= entry.flex_3_ticker.try(:name) || "Not picked" %>
-        </li>
-        <li>
-            Flex: <%= entry.flex_4_ticker.try(:name) || "Not picked" %>
-        </li>
-    </ul>
-
-    <% if entry.editable? %>
-        <%= link_to("Edit", edit_match_entry_path(entry.match, entry)) %>
-    <% else %>
-        <%= link_to("View", match_entry_path(entry.match, entry)) %>
-    <% end %>
-</li>
+<ul>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'technology'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'financial_services'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'telecommunications'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'energy'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'healthcare'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'flex_1'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'flex_2'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'flex_3'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'flex_4'} %>
+</ul>

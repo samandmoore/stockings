@@ -1,0 +1,11 @@
+<li>
+    <div class="ticker-slot">
+        <%= ticker_slot.humanize %>
+    </div>
+    <div class="ticker">
+        <%= @entry.public_send("#{ticker_slot}_ticker").try('name') || 'Not selected' %> 
+    </div>
+    <div class="return">
+        <%= @entry.public_send("#{ticker_slot}_ticker").try('latest_change') %>
+    </div>
+</li>

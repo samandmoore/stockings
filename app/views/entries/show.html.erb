@@ -1,3 +1,15 @@
-<%= render @match %>
+<div class="overall-return">
+    Overall Return: <%= @entry.score %>
+</div>
 
-<%= render @entry %>
+<ul>
+    <%= render partial: 'entry_ticker', locals: {ticker_slot: 'technology'} %>
+    <%= render partial: 'entry_ticker', locals: {ticker_slot: 'financial_services'} %>
+    <%= render partial: 'entry_ticker', locals: {ticker_slot: 'telecommunications'} %>
+    <%= render partial: 'entry_ticker', locals: {ticker_slot: 'energy'} %>
+    <%= render partial: 'entry_ticker', locals: {ticker_slot: 'healthcare'} %>
+    <%= render partial: 'entry_ticker', locals: {ticker_slot: 'flex_1'} %>
+    <%= render partial: 'entry_ticker', locals: {ticker_slot: 'flex_2'} %>
+    <%= render partial: 'entry_ticker', locals: {ticker_slot: 'flex_3'} %>
+    <%= render partial: 'entry_ticker', locals: {ticker_slot: 'flex_4'} %>
+</ul>

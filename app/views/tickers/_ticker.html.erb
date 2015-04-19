@@ -1,5 +1,11 @@
-<li>
-    <%= link_to ticker.name, match_entry_ticker_detail_path(@match, @entry, @ticker_slot, ticker.id) %>
+<li class="entry-ticker">
+    <div class="ticker-pick">
+        <a href="<%= match_entry_ticker_detail_path(@match, @entry, @ticker_slot, ticker.id) %>">
+            <%= truncate(ticker.name, length: 10) %> (<%= ticker.symbol %>)
+        </a>
+    </div>
 
-    <%= link_to "Add", match_entry_ticker_path(@match, @entry, @ticker_slot, ticker: { id: ticker.id }), method: :put %>
+    <div class="link">
+        <%= link_to "", match_entry_ticker_path(@match, @entry, @ticker_slot, ticker: { id: ticker.id }), method: :put, class: "plus" %>
+    </div>
 </li>

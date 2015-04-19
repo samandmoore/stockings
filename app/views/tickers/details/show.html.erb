@@ -1,26 +1,36 @@
-<h1>Ticker <%= @ticker.name %></h1>
+<div class="ticker-wrapper">
+    <h1><%= @ticker.name %> (<%= @ticker.symbol %>)</h1>
 
-<div class="chartContainer" style="width:400px;height:200px;position:relative;"></div>
-<div class="sentiment">
-    Sentiment: <%= @ticker.sentiment %>
+    <div class="chartContainer" style="width:400px;height:200px;position:relative;"></div>
+    <div class="ticker-data price">
+        <div class="lbl">Current price</div>
+        <div class="val">$<%= @ticker.latest_price %></div>
+    </div>
+    <div class="ticker-data earnings clearfix">
+        <div class="lbl">Predicted earnings per share</div>
+        <div class="lbl half">Wall street</div>
+        <div class="lbl half">Crowd sourced</div>
+        <div class="val half">$<%= @ticker.wallstreet_eps %></div>
+        <div class="val half <% if @ticker.crowd_v_street >= 0 %>green<% else %>red<% end %>">$<%= @ticker.crowdsourced_eps %></div>
+    </div>
+    <div class="ticker-data sentiment">
+        <div class="lbl">Consumer sentiment</div>
+        <div class="val"><%= @ticker.sentiment %></div>
+    </div>
+
+    <%= link_to "Add", match_entry_ticker_path(@match, @entry, @ticker_param_name, ticker: { id: @ticker.id }), method: :put %>
+
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+
+        var stxx = new STXChart({container: $$$(".chartContainer"),
+            layout: { chartType: "colored_line", crosshair: true },
+            preferences: { whitespace: 1, magnet: true}});
+
+        stxx.newChart("<%= @ticker.symbol %>", <%= raw @ticker.chart_data.to_json %>);
+
+    });
+
+    </script>
 </div>
-<div class="consumer-wallstreet">
-    Consumer vs Wallstreet ratio <%= @ticker.crowd_v_street %>
-</div>
-
-
-<%= link_to "Add", match_entry_ticker_path(@match, @entry, @ticker_param_name, ticker: { id: @ticker.id }), method: :put %>
-
-<script type="text/javascript">
-
-$(document).ready(function() {
-
-    var stxx = new STXChart({container: $$$(".chartContainer"), 
-        layout: { chartType: "colored_line", crosshair: true },
-        preferences: { whitespace: 1, magnet: true}});
-    
-    stxx.newChart("<%= @ticker.symbol %>", <%= raw @ticker.chart_data.to_json %>);
-
-});
-
-</script>

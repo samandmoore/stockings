@@ -59,4 +59,12 @@ class Ticker < ActiveRecord::Base
     EstimizeClient.new.ratio(symbol)
   end
 
+  def wallstreet_eps
+    EstimizeClient.new.current_wall_street_eps_estimate(symbol).round(2)
+  end
+
+  def crowdsourced_eps
+    EstimizeClient.new.current_crowdsourced_eps_estimate(symbol).round(2)
+  end
+
 end

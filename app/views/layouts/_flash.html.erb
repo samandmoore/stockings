@@ -1,0 +1,8 @@
+<script>
+    setTimeout(function() {
+        $('.flash').fadeOut('slow');
+    }, 3000);
+</script>
+<% flash.each do |key, value| %>
+    <%= content_tag :div, flash[key], class: "flash #{key}" %>
+<% end %>

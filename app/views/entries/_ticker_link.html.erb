@@ -1,18 +1,19 @@
+<% ticker = @entry.public_send("#{ticker_slot}_ticker") %>
 <li class="entry-ticker">
     <div class="ticker-slot">
-        <%= ticker_slot.humanize[0..3] %>
+        <%= truncate(ticker_slot.humanize, length: 8) %>
     </div>
 
     <div class="ticker-pick">
-    <% if @entry.public_send("#{ticker_slot}_ticker") %>
-        <div class="ticker edit">
-            <%= @entry.public_send("#{ticker_slot}_ticker").name %>
-        </div>
-    <% else %>
-        <div class="ticker add">
-            Add a ticker
-        </div>
-    <% end %>
+        <% if ticker %>
+            <div class="ticker edit">
+                <%= truncate(ticker.name, length: 10) %> (<%= ticker.symbol %>)
+            </div>
+        <% else %>
+            <div class="ticker add">
+                Add a ticker
+            </div>
+        <% end %>
     </div>
 
     <div class="link">

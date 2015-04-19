@@ -260,6 +260,8 @@ a {
       height: 70px;
       background-color: #4A90E2;
       border: none;
+      text-transform: uppercase;
+      font-size: 14px;
   }
 }
 
@@ -306,6 +308,8 @@ a {
     border: none;
     padding-top: 25px;
     text-align: center;
+    text-transform: uppercase;
+    font-size: 14px;
 
     &:hover {
       text-decoration: none;

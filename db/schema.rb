@@ -82,8 +82,4 @@ ActiveRecord::Schema.define(version: 20150419033613) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
-  add_foreign_key "entries", "matches", name: "entries_match_id_fk"
-  add_foreign_key "entries", "tickers", column: "technology_ticker_id", name: "entries_tech_ticker_id_fk"
-  add_foreign_key "entries", "users", name: "entries_user_id_fk"
-  add_foreign_key "tickers", "sectors", name: "tickers_sector_id_fk"
 end

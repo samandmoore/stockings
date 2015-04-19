@@ -1,9 +1,9 @@
 <h1>Find a match!</h1>
 
 <%= simple_form_for @match, class: 'form-horizontal' do |f| %>
-    <%= f.input :duration, as: :button_radio, collection: [ [1, 1], [4, 4], [20, 20] ], label: 'Business Days' %>
-    <%= f.input :max_entries, as: :button_radio, collection: [ [2, 2], [10, 10], [50, 50] ] %>
+    <%= f.input :max_entries, as: :button_radio, collection: [ [2, 2], [10, 10], [50, 50] ], label: 'Number of participants' %>
     <%= f.input :wager_cents, as: :button_radio, collection: [ ['$1', 1_00], ['$5', 5_00], ['$10', 10_00]], label: 'Wager' %>
+    <%= f.input :duration, as: :button_radio, collection: [ [1, 1], [4, 4], [20, 20] ], label: 'Duration in days' %>
 
     <%= f.submit 'Find a match' %>
 <% end %>

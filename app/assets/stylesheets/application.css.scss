@@ -137,3 +137,50 @@ h1 {
     }
   }
 }
+
+.new_match {
+
+  .form-group.button_radio {
+    border-top: 1px solid #3c3c3c;
+    padding-top: 10px;
+    margin-bottom: 25px;
+
+    label.button_radio{
+      width:100%;
+      margin: 10px 0 20px;
+      font-weight: $font-light;
+
+      abbr {
+        display: none;
+      }
+    }
+
+    .btn-group {
+      width: 100%;
+      text-align: center;
+
+      label.btn {
+        width: 32%;
+        border: 1px solid #3c3c3c;
+        height: 50px;
+        padding: 16px;
+
+        &.active {
+          background-color: black;
+          color: #4A90E2;
+        }
+      }
+    }
+  }
+
+  input[type='submit'] {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      background-color: #4A90E2;
+      border: none;
+  }
+
+}

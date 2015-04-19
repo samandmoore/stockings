@@ -44,6 +44,19 @@ class XigniteClient
     north_american_companies('A', 'ZZZZ')
   end
 
+  def demo_tickers
+# healthcare, conglomerates, utilities 254, services 210, financial 100, technology 248
+    symbols = %w(MELA RCPT SMED CERE DXCM EHTH EPZM FCSC FATE
+    ASTC ATRO AVAV BEAV ESLT ISSC KLXI LMIA MKTO PANL RMGN
+    ABY ARCI CSUN CWST IDSA MGEE OTTR MSEX MPET SGI
+    AAWW BONA BV CADT CLACU FRPH GRIF LOAN MNTX PRGN
+    AAPL ACTS AVGO CAMT MAGS MATR MVIS QVCA REDF)
+
+    symbols.map do |s|
+      north_american_companies(s, s).first
+    end
+  end
+
   def north_american_companies(start_symbol, end_symbol)
     params = {
       "_Token" => token,
@@ -52,6 +65,7 @@ class XigniteClient
       "MarketIdentificationCode" => "XNAS"
     }
     response = conn.get("http://financials.xignite.com/xFinancials.json/ListCompanies", params).body['Companies']
+    puts start_symbol unless response
     response.map do |tuple|
       XigniteTicker.new(
         company_name: tuple["CompanyName"],

@@ -3,7 +3,7 @@ namespace :tickers do
   desc "Refresh all tickers in the database"
   task refresh: [:environment, "sectors:refresh"] do
 
-    all_tickers = XigniteClient.new.all_north_america_companies
+    all_tickers = XigniteClient.new.demo_tickers
     all_tickers.each do |xignite_ticker|
       unless xignite_ticker.cusip.blank?
         Ticker.find_or_create_by!(symbol: xignite_ticker.symbol) do |ticker|

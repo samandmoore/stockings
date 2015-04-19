@@ -7,9 +7,11 @@ class Sector < ActiveRecord::Base
     healthcare
   ).freeze
 
-  KEYS.each do |scope_name|
-    scope scope_name, -> { where(key: scope_name.to_s) }
-  end
+  scope :technology, -> { where(key: 'technology') }
+  scope :financial_services, -> { where(key: 'financial') }
+  scope :telecommunications, -> { where(key: 'conglomerates') }
+  scope :energy, -> { where(key: 'utilities') }
+  scope :healthcare, -> { where(key: 'healthcare') }
 
   validates :name, :key, :code, presence: true
 end

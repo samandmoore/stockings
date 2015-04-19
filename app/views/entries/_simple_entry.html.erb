@@ -1,13 +1,18 @@
 <li>
     <div class="left">
+        <span>Match <%= entry.match.id %></span>
+        <br />
+        <span class="small-caps"><%= entry.match.wager.format %> wagered</span>
     </div>
 
     <div class="right">
         <% if entry.match.started? %>
             <span><%= entry.rank %> of <%= entry.match.entries.size %></span>
         <% else %>
-            <span>starts <%= entry.match.start_at %></span>
+            <span>starts <%= entry.match.start_at.strftime("%m/%d %H:%M") %></span>
         <% end %>
+        <br />
+        <span class="small-caps"><%= entry.match.entries.size %> participants</span>
     </div>
 
     <% if entry.user == current_user && entry.editable? %>

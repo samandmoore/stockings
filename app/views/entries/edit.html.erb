@@ -1,6 +1,6 @@
-<%= render @match %>
+<h1>Your Portfolio</h1>
 
-<ul>
+<ul class="entry-tickers">
     <%= render partial: 'ticker_link', locals: {ticker_slot: 'technology'} %>
     <%= render partial: 'ticker_link', locals: {ticker_slot: 'financial_services'} %>
     <%= render partial: 'ticker_link', locals: {ticker_slot: 'telecommunications'} %>
@@ -10,5 +10,4 @@
     <%= render partial: 'ticker_link', locals: {ticker_slot: 'flex_2'} %>
     <%= render partial: 'ticker_link', locals: {ticker_slot: 'flex_3'} %>
     <%= render partial: 'ticker_link', locals: {ticker_slot: 'flex_4'} %>
-
 </ul>

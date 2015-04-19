@@ -55,8 +55,4 @@ class Ticker < ActiveRecord::Base
     EstimizeClient.new.ratio(symbol)
   end
 
-  def crowd_v_street
-    EstimizeClient.new.ratio(symbol)
-  end
-
 end

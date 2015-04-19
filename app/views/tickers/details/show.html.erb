@@ -2,7 +2,10 @@
 
 <div class="chartContainer" style="width:400px;height:200px;position:relative;"></div>
 <div class="sentiment">
-    Bullish Intensity: <%= @ticker.sentiment.bullish_intensity %>
+    Sentiment: <%= @ticker.sentiment %>
+</div>
+<div class="consumer-wallstreet">
+    Consumer vs Wallstreet ratio <%= @ticker.crowd_v_street %>
 </div>
 
 

@@ -1,12 +1,74 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "chartiq";
-@import "museo";
+@import "fonts";
 
+$white: #ffffff;
 $black: #262626;
+$blue: #4A90E2;
+$green: #7ED321;
+$red: #F0384E;
+$base-font-size: 10px;
+$base-line-height: 1.3;
+
+html {
+  font-size: $base-font-size;
+  line-height: $base-line-height;
+}
+
+body {
+  font-family: $primary-font-stack;
+  color: $white;
+}
+
+input, textarea, select, button {
+  font-family: inherit;
+}
+
+a, span, p, div, li {
+  font-size: 1.6rem;
+}
+
+b, strong {
+  font-weight: bold;
+}
+
+i, em {
+  font-style: italic;
+}
+
+sup {
+  font-size: 80%;
+  vertical-align: super;
+}
 
 body {
   background: $black;
+}
+
+.flash-container {
+  position: relative;
+  .flash {
+    position: absolute;
+    left: 25%;
+    margin: 40px auto;
+    background: white;
+    color: black;
+    padding: 60px 40px;
+    opacity: 0.75;
+    border-radius: 4px;
+    text-align: center;
+
+    &.success {
+      &:before {
+        content: asset_url('check_large.png');
+        display: block;
+      }
+    }
+    p {
+      margin-top: 20px;
+    }
+  }
 }
 
 .login-wrapper {

@@ -19,11 +19,12 @@ class TickersController < ApplicationController
   def update
     match = Match.find params[:match_id]
     entry = current_user.entries.find params[:entry_id]
-    entry.public_send("#{params[:id]}_ticker_id=", update_params[:id])
+    ticker = Ticker.find update_params[:id]
+    entry.public_send("#{params[:id]}_ticker=", ticker)
 
     entry.save!
 
-    redirect_to edit_match_entry_path(match, entry)
+    redirect_to edit_match_entry_path(match, entry), flash: { success: "Added #{ticker.symbol} to portfolio." }
   end
 
   private

@@ -51,4 +51,8 @@ class Ticker < ActiveRecord::Base
     XigniteClient.new.get_historical_quotes(self.symbol, as_of, as_of).first.change
   end
 
+  def crowd_v_street
+    EstimizeClient.new.ratio(symbol)
+  end
+
 end

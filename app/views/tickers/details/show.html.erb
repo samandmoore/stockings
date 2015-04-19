@@ -17,11 +17,13 @@ $(document).ready(function() {
 
     var stxx = new STXChart({container: $$$(".chartContainer"), 
         layout: { chartType: "colored_line" },
-        preferences: { whitespace: 1, magnet: true}});
+        preferences: { whitespace: 1, magnet: true, labels: false}});
     stxx.chart.xAxis.displayGridLines=false;
     stxx.chart.yAxis.displayGridLines=false;
     stxx.chart.yAxis.noDraw=true;
     stxx.chart.xAxis.noDraw=true;
+    stxx.chart.yAxis.drawCurrentPriceLabel=false;
+    stxx.preferences.labels=false
 
 
     stxx.newChart("<%= @ticker.symbol %>", <%= raw @ticker.chart_data.to_json %>);

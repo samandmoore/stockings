@@ -1,8 +1,10 @@
 <script>
     setTimeout(function() {
         $('.flash').fadeOut('slow');
-    }, 3000);
+    }, 2500);
 </script>
 <% flash.each do |key, value| %>
-    <%= content_tag :div, flash[key].gsub(/\n/, "<br />").html_safe, class: "flash #{key}" %>
+    <%= content_tag :div, class: "flash #{key} alert alert-dismissible", "data-dismiss" => "alert" do %>
+        <%= content_tag :p, flash[key].gsub(/\n/, "<br />").html_safe %>
+    <% end %>
 <% end %>

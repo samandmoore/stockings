@@ -2,7 +2,6 @@ class EntriesController < ApplicationController
 
   def index
     @entries = current_user.entries
-    flash[:success] = "Match joined!\nNow set your portfolio."
   end
 
   def create
@@ -18,6 +17,7 @@ class EntriesController < ApplicationController
   def edit
     @match = Match.find params[:match_id]
     @entry = current_user.entries.find params[:id]
+    flash[:success] = "Added something\n here to look at."
   end
 
   def update

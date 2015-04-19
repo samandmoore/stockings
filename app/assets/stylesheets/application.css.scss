@@ -12,14 +12,28 @@ body {
 }
 
 .flash-container {
-  position: absolute;
-  top: 10%;
-  left: 25%;
-  background: white;
-  color: black;
-  padding: 40px 20px;
-  opacity: 0.75;
-  border-radius: 4px;
+  position: relative;
+  .flash {
+    position: absolute;
+    left: 25%;
+    margin: 40px auto;
+    background: white;
+    color: black;
+    padding: 60px 40px;
+    opacity: 0.75;
+    border-radius: 4px;
+    text-align: center;
+
+    &.success {
+      &:before {
+        content: asset_url('check_large.png');
+        display: block;
+      }
+    }
+    p {
+      margin-top: 20px;
+    }
+  }
 }
 
 .login-wrapper {

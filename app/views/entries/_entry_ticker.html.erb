@@ -13,6 +13,6 @@
 
     <% latest_change = ticker.try('latest_change') || 0 %>
     <div class="return <%= latest_change > 0 ? 'green' : 'red' %>">
-        <%= latest_change %>
+        <%= sprintf "%.2f", latest_change %>%
     </div>
 </li>

@@ -26,6 +26,10 @@ class Ticker < ActiveRecord::Base
     end.reverse
   end
 
+  def display_name
+    "#{name} (#{symbol})"
+  end
+
   def sentiment
     PsychSignalClient.new.get_current_sentiment(symbol)
   end

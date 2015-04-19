@@ -1,3 +1,4 @@
+<h1><%= @entry.user == current_user ? "Your" : "#{@entry.user.full_name}'s" %> Portfolio</h1>
 <div class="overall-return <%= @entry.score && @entry.score > 0 ? 'green' : 'red' %>">
     Overall Return: <%= @entry.score %>
 </div>

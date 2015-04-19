@@ -22,7 +22,5 @@
 <div class="container">
     <%= yield %>
 </div>
-
-<%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' if current_user.present? %>
 </body>
 </html>

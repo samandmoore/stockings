@@ -46,13 +46,55 @@ class XigniteClient
   end
 
   def demo_tickers
-# healthcare, conglomerates, utilities 254, services 210, financial 100, technology 248
-    symbols = %w(MELA RCPT SMED CERE DXCM EHTH EPZM FCSC FATE
-    ASTC ATRO AVAV BEAV ESLT ISSC KLXI LMIA MKTO PANL RMGN
-    ABY ARCI CSUN CWST IDSA MGEE OTTR MSEX MPET SGI
-    AAWW BONA BV CADT CLACU FRPH GRIF LOAN MNTX PRGN
-    AAL CAC ININ ISTR KTWO LCNB IPCC LBAI KEYW
-    AAPL ACTS AVGO CAMT MAGS MATR MVIS QVCA REDF)
+    symbols = %w(
+C
+GE
+HSBC
+JPM
+KEY
+LAZ
+MA
+MET
+MS
+NBG
+
+AOL
+CAJ
+CRM
+GDDY
+FIS
+HPQ
+LXK
+TWTR
+TWC
+NOK
+
+
+BA
+COL
+HON
+LMT
+RTN
+NOC
+AIR
+
+
+CWT
+EXC
+HE
+SXC
+SO
+SE
+
+EVHC
+HLF
+HUM
+JNJ
+PFE
+REV
+NPD
+VRX
+    )
 
     symbols.map do |s|
       north_american_companies(s, s).first
@@ -64,7 +106,7 @@ class XigniteClient
       "_Token" => token,
       "StartSymbol" => start_symbol,
       "EndSymbol" => end_symbol,
-      "MarketIdentificationCode" => "XNAS"
+      "MarketIdentificationCode" => "XNYS"
     }
     response = conn.get("http://financials.xignite.com/xFinancials.json/ListCompanies", params).body['Companies']
     puts start_symbol unless response
@@ -79,7 +121,7 @@ class XigniteClient
     end
   end
 
-  def nasdaq_ticker_detail(symbol)
+  def nyse_ticker_detal(symbol)
     today = Time.now.strftime('%m/%d/%Y')
     params = {
       "_Token" => token,
@@ -90,7 +132,7 @@ class XigniteClient
     }
 
     response = conn.get('http://globalmaster.xignite.com/xglobalmaster.json/GetMasterByIdentifier', params).body
-    nasdaq_item = response.select { |item| item["ExchangeName"] == "NASDAQ" }.first
+    nasdaq_item = response.select { |item| item["Exchange"] == "XNYS" }.first
     XignteTickerDetail.new(
       symbol: nasdaq_item["Symbol"],
       sector: nasdaq_item["Sector"],

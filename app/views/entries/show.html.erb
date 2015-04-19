@@ -1,6 +1,8 @@
+<h1><%= @entry.user == current_user ? "Your" : "#{@entry.user.full_name}'s" %> Portfolio</h1>
+<h2><%= link_to "< Back to Match", match_path(@match) %></h2>
+
 <div class="portfolio-wrapper">
 
-    <h1><%= @entry.user == current_user ? "Your" : "#{@entry.user.full_name}'s" %> Portfolio</h1>
     <div class="overall-return">
         <div class="lbl">Overall Return</div>
         <div class="val <%= @entry.score && @entry.score > 0 ? 'green' : 'red' %>"><%= @entry.score %>%</div>

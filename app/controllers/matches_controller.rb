@@ -14,7 +14,7 @@ class MatchesController < ApplicationController
   def create
     @match = Match.open.tomorrow.find_or_initialize_by(create_params)
 
-    if @match.save!
+    if @match.save
       redirect_to @match
     else
       render :new

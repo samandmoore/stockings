@@ -23,4 +23,12 @@ class Entry < ActiveRecord::Base
   def editable?
     !match.started?
   end
+
+  def <=>(other)
+    score <=> other.score
+  end
+
+  def score
+    @score ||= rand(10)
+  end
 end

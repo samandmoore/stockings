@@ -1,0 +1,10 @@
+<li>
+    Entry for <%= entry.user.email %>
+
+    <% if entry.user == current_user && entry.editable? %>
+        <%= link_to("Edit", edit_match_entry_path(entry.match, entry)) %>
+        <%= link_to("View", match_entry_path(entry.match, entry)) %>
+    <% elsif entry.match.started? %>
+        <%= link_to("View", match_entry_path(entry.match, entry)) %>
+    <% end %>
+</li>

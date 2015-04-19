@@ -2,7 +2,31 @@
     Entry for <%= entry.user.full_name %>
     <ul>
         <li>
-            Tech Ticker: <%= entry.technology_ticker.try(:name) || "Not picked" %>
+            Technology: <%= entry.technology_ticker.try(:name) || "Not picked" %>
+        </li>
+        <li>
+            Financial Services: <%= entry.financial_services_ticker.try(:name) || "Not picked" %>
+        </li>
+        <li>
+            Telecommunications: <%= entry.telecommunications_ticker.try(:name) || "Not picked" %>
+        </li>
+        <li>
+            Energy: <%= entry.energy_ticker.try(:name) || "Not picked" %>
+        </li>
+        <li>
+            Healthcare: <%= entry.healthcare_ticker.try(:name) || "Not picked" %>
+        </li>
+        <li>
+            Flex: <%= entry.flex_1_ticker.try(:name) || "Not picked" %>
+        </li>
+        <li>
+            Flex: <%= entry.flex_2_ticker.try(:name) || "Not picked" %>
+        </li>
+        <li>
+            Flex: <%= entry.flex_3_ticker.try(:name) || "Not picked" %>
+        </li>
+        <li>
+            Flex: <%= entry.flex_4_ticker.try(:name) || "Not picked" %>
         </li>
     </ul>
 

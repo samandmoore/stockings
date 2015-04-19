@@ -17,7 +17,7 @@ class PsychSignalClient
 
 
     }
-    
+
     response = conn.get(psychsignal_api_url('historical_sentiments/'), api_paramaters).body
 
     sentiments = response.map do |tuple|
@@ -50,7 +50,7 @@ class PsychSignalClient
     elsif bullish?(weighted_intensity.round(2))
       'Bullish'
     elsif nuetral?(weighted_intensity.round(2))
-      'Nuetral'
+      'Neutral'
     elsif bearish?(weighted_intensity.round(2))
       'Bearish'
     elsif very_bearish?(weighted_intensity.round(2))

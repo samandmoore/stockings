@@ -2,6 +2,7 @@ class EntriesController < ApplicationController
 
   def index
     @entries = current_user.entries
+    flash[:success] = "Match joined!\nNow set your portfolio."
   end
 
   def create

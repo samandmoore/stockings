@@ -3,9 +3,23 @@
 @import "chartiq";
 
 $black: #262626;
+$blue: #4A90E2;
+$green: #7ED321;
+$red: #F0384E;
 
 body {
   background: $black;
+}
+
+.flash-container {
+  position: absolute;
+  top: 10%;
+  left: 25%;
+  background: white;
+  color: black;
+  padding: 40px 20px;
+  opacity: 0.75;
+  border-radius: 4px;
 }
 
 .login-wrapper {

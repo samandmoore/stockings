@@ -20,6 +20,10 @@ $(document).ready(function() {
         preferences: { whitespace: 1, magnet: true}});
     stxx.chart.xAxis.displayGridLines=false;
     stxx.chart.yAxis.displayGridLines=false;
+    stxx.chart.yAxis.noDraw=true;
+    stxx.chart.xAxis.noDraw=true;
+
+
     stxx.newChart("<%= @ticker.symbol %>", <%= raw @ticker.chart_data.to_json %>);
 
 });

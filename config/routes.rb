@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'user/registrations' }
 
   resources :matches do
-    resources :entries, except: :index
+    resources :entries, except: :index do
+      resources :tickers, only: [:edit, :update] do
+        resources :details, only: [:show], controller: 'tickers/details'
+      end
+    end
   end
 
   resources :tickers

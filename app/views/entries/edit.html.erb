@@ -1,19 +1,14 @@
 <%= render @match %>
 
-<%= simple_form_for @entry, url: match_entry_path(@match, @entry) do |f| %>
-    <div class="bg-danger">
-        <%= f.error :user_id %>
-    </div>
+<ul>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'technology'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'financial_services'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'telecommunications'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'energy'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'healthcare'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'flex_1'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'flex_2'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'flex_3'} %>
+    <%= render partial: 'ticker_link', locals: {ticker_slot: 'flex_4'} %>
 
-    <%= f.input :technology_ticker_id, collection: Ticker.technology, label_method: :symbol %>
-    <%= f.input :financial_services_ticker_id, collection: Ticker.financial_services, label_method: :symbol %>
-    <%= f.input :telecommunications_ticker_id, collection: Ticker.telecommunications, label_method: :symbol %>
-    <%= f.input :energy_ticker_id, collection: Ticker.energy, label_method: :symbol %>
-    <%= f.input :healthcare_ticker_id, collection: Ticker.healthcare, label_method: :symbol %>
-    <%= f.input :flex_1_ticker_id, collection: Ticker.all, label_method: :symbol %>
-    <%= f.input :flex_2_ticker_id, collection: Ticker.all, label_method: :symbol %>
-    <%= f.input :flex_3_ticker_id, collection: Ticker.all, label_method: :symbol %>
-    <%= f.input :flex_4_ticker_id, collection: Ticker.all, label_method: :symbol %>
-
-    <%= f.submit %>
-<% end %>
+</ul>

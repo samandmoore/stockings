@@ -1,0 +1,5 @@
+<li>
+    <%= link_to ticker.name, match_entry_ticker_detail_path(@match, @entry, @ticker_slot, ticker.id) %>
+
+    <%= link_to "Add", match_entry_ticker_path(@match, @entry, @ticker_slot, ticker: { id: ticker.id }), method: :put %>
+</li>

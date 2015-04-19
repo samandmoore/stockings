@@ -6,6 +6,8 @@
 </div>
 
 
+<%= link_to "Add", match_entry_ticker_path(@match, @entry, @ticker_param_name, ticker: { id: @ticker.id }), method: :put %>
+
 <script type="text/javascript">
 
 $(document).ready(function() {

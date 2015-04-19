@@ -272,10 +272,12 @@ a {
   }
 
   .ticker-data {
-    padding-top: 10px;
+    padding: 10px 0;
+    border-top: 1px solid white;
 
-    &:not(:first-of-type) {
-      border-top: 1px solid white;
+    &.no-top {
+      border: none;
+      padding-top: 0;
     }
 
     .lbl {

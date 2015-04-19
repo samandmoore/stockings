@@ -2,7 +2,7 @@
     <h1><%= @ticker.name %> (<%= @ticker.symbol %>)</h1>
 
     <div class="chartContainer" style="width:400px;height:200px;position:relative;"></div>
-    <div class="ticker-data price">
+    <div class="ticker-data price no-top">
         <div class="lbl">Current price</div>
         <div class="val">$<%= @ticker.latest_price %></div>
     </div>
@@ -39,7 +39,6 @@
     stxx.chart.xAxis.noDraw=true;
     stxx.chart.yAxis.drawCurrentPriceLabel=false;
     stxx.preferences.labels=false
-
 
     stxx.newChart("<%= @ticker.symbol %>", <%= raw @ticker.chart_data.to_json %>);
 

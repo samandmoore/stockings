@@ -17,6 +17,10 @@ class Match < ActiveRecord::Base
     Time.now > start_at
   end
 
+  def ended?
+    Time.now > end_at
+  end
+
   def available_slots
     max_entries - entries.size
   end

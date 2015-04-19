@@ -1,9 +1,11 @@
 <% if @match.started? %>
     <%= render partial: 'standings' %>
 <% else %>
-    <%= render partial: 'join' %>
+    <%= render partial: 'open' %>
+    <% if !@match.started? && !current_user.matches.include?(@match) %>
+        <%= link_to 'Join!', match_entries_path(@match), method: :post, class: 'btn join-match' %>
+    <% else %>
+        <%= link_to 'View Entry', edit_match_entry_path(@match, current_user.entries.find_by(match: @match)), class: 'btn join-match' %>
+    <% end %>
 <% end %>
 
-<% unless @match.started? || current_user.matches.include?(@match) %>
-    <%= link_to 'Join!', match_entries_path(@match), method: :post, class: 'btn join-match' %>
-<% end %>

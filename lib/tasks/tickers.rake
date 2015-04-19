@@ -10,7 +10,7 @@ namespace :tickers do
           ticker.name = xignite_ticker.company_name
           ticker.cusip = xignite_ticker.cusip
 
-          nasdaq_info = XigniteClient.new.nasdaq_ticker_detail(xignite_ticker.symbol)
+          nasdaq_info = XigniteClient.new.nyse_ticker_detal(xignite_ticker.symbol)
           if nasdaq_info
             sector_key = nasdaq_info.sector.parameterize.underscore
             industry_key = nasdaq_info.industry.parameterize.underscore
@@ -21,6 +21,22 @@ namespace :tickers do
             ticker.industry = industry
           end
         end
+      end
+    end
+  end
+
+  task assign: [:environment] do
+    Ticker.all.each do |ticker|
+      nasdaq_info = XigniteClient.new.nyse_ticker_detal(ticker.symbol)
+      if nasdaq_info
+        sector_key = nasdaq_info.sector.parameterize.underscore
+        industry_key = nasdaq_info.industry.parameterize.underscore
+        sector = Sector.find_by_key(sector_key)
+        industry = Sector.find_by_key(industry_key)
+
+        ticker.sector = sector
+        ticker.industry = industry
+        ticker.save!
       end
     end
   end

@@ -1,24 +1,23 @@
-<li>
-    <div class="left">
-        <span>Match <%= entry.match.id %></span>
-        <br />
-        <span class="small-caps"><%= entry.match.wager.format %> wagered</span>
-    </div>
+<li class="simple-entry">
+<% if entry.user == current_user && entry.editable? %>
+    <a href="<%= edit_match_entry_path(entry.match, entry) %>">
+<% elsif entry.match.started? %>
+    <a href="<%= match_entry_path(entry.match, entry) %>">
+<% end %>
+        <div class="left">
+            <span>Match <%= entry.match.id %></span>
+            <br />
+            <span class="small-caps"><%= entry.match.wager.format %> wagered</span>
+        </div>
 
-    <div class="right">
-        <% if entry.match.started? %>
-            <span><%= entry.rank %> of <%= entry.match.entries.size %></span>
-        <% else %>
-            <span>starts <%= entry.match.start_at.strftime("%m/%d %H:%M") %></span>
-        <% end %>
-        <br />
-        <span class="small-caps"><%= entry.match.entries.size %> participants</span>
-    </div>
-
-    <% if entry.user == current_user && entry.editable? %>
-        <%= link_to("Edit", edit_match_entry_path(entry.match, entry)) %>
-        <%= link_to("View", match_entry_path(entry.match, entry)) %>
-    <% elsif entry.match.started? %>
-        <%= link_to("View", match_entry_path(entry.match, entry)) %>
-    <% end %>
+        <div class="right">
+            <% if entry.match.started? %>
+                <span><%= entry.rank %> of <%= entry.match.entries.size %></span>
+            <% else %>
+                <span>starts <%= entry.match.start_at.strftime("%m/%d %H:%M") %></span>
+            <% end %>
+            <br />
+            <span class="small-caps"><%= entry.match.entries.size %> participants</span>
+        </div>
+    </a>
 </li>

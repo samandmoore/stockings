@@ -4,7 +4,11 @@
         <%= ticker_slot.humanize[0..3] %>
     </div>
     <div class="ticker-pick">
-        <%= ticker.try('display_name') || 'Not selected' %>
+        <% if ticker %>
+            <%= truncate(ticker.name, length: 10) %> (<%= ticker.symbol %>)
+        <% else %>
+            Not selected
+        <% end %>
     </div>
 
     <% latest_change = ticker.try('latest_change') || 0 %>

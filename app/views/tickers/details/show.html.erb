@@ -28,7 +28,20 @@
             layout: { chartType: "colored_line", crosshair: true },
             preferences: { whitespace: 1, magnet: true}});
 
-        stxx.newChart("<%= @ticker.symbol %>", <%= raw @ticker.chart_data.to_json %>);
+    STXChart.prototype.prepend('drawXAxis', function() { return true; });
+
+    var stxx = new STXChart({container: $$$(".chartContainer"),
+        layout: { chartType: "colored_line" },
+        preferences: { whitespace: 1, magnet: false, labels: false}});
+    stxx.chart.xAxis.displayGridLines=false;
+    stxx.chart.yAxis.displayGridLines=false;
+    stxx.chart.yAxis.noDraw=true;
+    stxx.chart.xAxis.noDraw=true;
+    stxx.chart.yAxis.drawCurrentPriceLabel=false;
+    stxx.preferences.labels=false
+
+
+    stxx.newChart("<%= @ticker.symbol %>", <%= raw @ticker.chart_data.to_json %>);
 
     });
 

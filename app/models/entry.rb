@@ -33,7 +33,7 @@ class Entry < ActiveRecord::Base
   end
 
   def score
-    @score ||= tickers.to_a.map(&:latest_change).reduce(:+).try(:round, 3)
+    @score ||= tickers.to_a.map(&:latest_change).reduce(:+).try(:round, 3) || 0
   end
 
   def ticker_ids

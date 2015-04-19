@@ -160,6 +160,8 @@ a {
     @extend .small-caps;
     float: left;
     width: 28%;
+    font-size: 10px;
+    padding-top: 5px;
   }
   .return {
     float: right;
@@ -316,6 +318,33 @@ a {
       color: white;
     }
   }
+}
+
+.portfolio-wrapper {
+
+  h1 {
+    width:100%;
+    text-align: left;
+    font-size: 20px;
+  }
+
+  .overall-return {
+    margin: 25px 0 25px;
+
+    .lbl {
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+
+    .val {
+      font-size: 32px;
+    }
+  }
+
+  .entry-ticker {
+    padding: 1.5rem;
+  }
+
 }
 
 .green {

@@ -1,13 +1,9 @@
-<%= render @match %>
-
 <% if @match.started? %>
     <%= render partial: 'standings' %>
 <% else %>
-    <ul>
-        <%= render partial: 'entries/simple_entry', collection: @match.entries, as: :entry %>
-    </ul>
+    <%= render partial: 'join' %>
 <% end %>
 
 <% unless @match.started? || current_user.matches.include?(@match) %>
-    <%= link_to 'Join!', match_entries_path(@match), method: :post %>
+    <%= link_to 'Join!', match_entries_path(@match), method: :post, class: 'btn join-match' %>
 <% end %>

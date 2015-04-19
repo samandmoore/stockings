@@ -1,0 +1,19 @@
+<div class="match-to-join">
+    <div class="wager"><%= @match.wager.format %></div>
+    <div class="right">
+        <div class="slots"><%= @match.available_slots %> slots left (of <%= @match.max_entries %>)</div>
+        <div class="duration">Runs for <%= @match.duration %> business days</div>
+    </div>
+    <div class="countdown">
+        <span>starts in </span>
+        <br />
+        <span class="starts-at"></span>
+    </div>
+    <script type="text/javascript">
+    $('.starts-at').countdown("<%= @match.start_at.strftime("%Y/%m/%d") %>", function(event) {
+        $(this).text(
+            event.strftime('%-H hours %M minutes %S seconds')
+        );
+    });
+    </script>
+</div>

@@ -149,7 +149,7 @@ a {
   .ticker-slot {
     @extend .small-caps;
     float: left;
-    width: 40%;
+    width: 28%;
   }
   .return {
     float: right;
@@ -163,19 +163,33 @@ a {
   .link {
     @extend .right;
   }
-  .right-arrow {
-    text-indent: -10000;
+}
+
+.simple-entry {
+  a {
+    position: relative;
+    display: block;
+    @extend .clearfix;
+    @extend .right-arrow;
+
     &:after {
-      content: asset_url('arrow_right.png');
-      display: block;
+      position: absolute;
+      right: -25px;
+      top: 10px;
     }
   }
-  .plus {
-    text-indent: -10000;
-    &:after {
-      content: asset_url('plus.png');
-      display: block;
-    }
+}
+
+.right-arrow {
+  &:after {
+    content: asset_url('arrow_right.png');
+    display: block;
+  }
+}
+.plus {
+  &:after {
+    content: asset_url('plus.png');
+    display: block;
   }
 }
 

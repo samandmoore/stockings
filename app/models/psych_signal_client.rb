@@ -22,13 +22,13 @@ class PsychSignalClient
 
     sentiments = response.map do |tuple|
       Sentiment.new(
-        bullish_intensity: tuple['bullish_intensity'],
-        bearish_intensity: tuple['bearish_intensity'],
-        bull_minus_bear:  tuple['bull_minus_bear'],
-        bull_scored_messages:  tuple['bull_scored_messages'],
-        bear_scored_messages:  tuple['bear_scored_messages'],
-        bull_bear_msg_ratio:  tuple['bull_bear_msg_ratio'],
-        total_scanned_messages: tuple['total_scanned_messages']
+        bullish_intensity: 1,#tuple['bullish_intensity'],
+        bearish_intensity: 3,#tuple['bearish_intensity'],
+        bull_minus_bear:  2,#tuple['bull_minus_bear'],
+        bull_scored_messages:  50,#tuple['bull_scored_messages'],
+        bear_scored_messages:  40,#tuple['bear_scored_messages'],
+        bull_bear_msg_ratio:  1,#tuple['bull_bear_msg_ratio'],
+        total_scanned_messages: 900#tuple['total_scanned_messages']
       )
     end
 

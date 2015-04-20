@@ -172,7 +172,7 @@ VRX
     }
     response = conn.get('http://batsrealtime.xignite.com/xBATSRealTime.json/GetRealQuote', params).body
     XigniteBatsPrice.new(
-      date: Time.strptime(response["Date"], "%m/%d/%Y"),
+      date: Time.now,#Time.strptime(response["Date"], "%m/%d/%Y"),
       symbol: response["Symbol"],
       open: response["Open"].to_f,
       close: response["Close"].to_f,
